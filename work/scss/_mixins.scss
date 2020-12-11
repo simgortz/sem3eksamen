@@ -1,0 +1,8 @@
+@mixin main-border{
+    border: 3px solid $main-color;
+    border-radius: ($main-space/2);
+}
+
+@mixin box-shadow{
+    box-shadow: 2px 3px 15px #000000;
+}

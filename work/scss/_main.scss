@@ -1,0 +1,72 @@
+body{
+    background-color: $main-black-dark;
+    background-image: linear-gradient(to right, $main-black-darker, rgba(0,0,0,0), $main-black-darker);
+    font-family: apertura, sans-serif;
+    margin: 0;
+    background-attachment: fixed;
+
+    .container-fluid{
+        .info-box{
+            width: 100%;
+            max-width: 640px;
+            margin: 10% auto 0 auto;
+            padding: $main-space;
+            @include main-border;
+            background-color: $main-white;
+            @include box-shadow;
+        }
+        .btn-primary{
+            background-color: $main-color;
+            border-color: $main-color-darker;
+            &:hover{
+                background-color: $main-color-dark;
+                border-color: $main-color-darker;
+            }
+        }
+        a{
+            color: $main-color;
+            &:hover{
+                color: $main-color-darker;
+            }
+        }
+        .topmenu{
+            background-color: $main-color;
+            background-image: linear-gradient(rgba(0,0,0,0), $main-color-darker);
+            @include box-shadow;
+            a{
+                color: $main-white;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+            .navbar{
+                .navbar-toggler-icon{
+                    color: $main-white;
+                }
+                .collapse{
+                    justify-content: flex-end;
+                }
+            }
+        }
+        .col{
+            max-width: 1440px;
+            margin: auto;
+            #canvas{
+                display: block;
+                margin: 0 auto 0 auto;
+                max-height: 90%;
+                @include box-shadow;
+            }
+        }
+
+        .content-wrapper{
+            padding: $main-space;
+            #playerScore{
+                margin-top: $main-space;
+                font-size: 40px;
+                text-align: center;
+                color: $main-white;
+            }
+        }
+    }
+}
