@@ -1,5 +1,5 @@
 <?php 
-// Define variables and initialize with empty values
+// Define variables and initialize with empty values (unless an account was just created -> log that account in)
 if($accountcreated == false){
     $username = $password = "";
     $username_err = $password_err = "";

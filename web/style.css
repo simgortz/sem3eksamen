@@ -3922,6 +3922,22 @@ body {
   background-attachment: fixed;
 }
 
+body h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+body p {
+  font-size: 18px;
+}
+
+body .container-fluid .account-information, body .container-sm .account-information, body .container-md .account-information, body .container-lg .account-information, body .container-xl .account-information {
+  color: #f2f2f2;
+  width: 100%;
+  max-width: 640px;
+  margin: 10% auto 0 auto;
+}
+
 body .container-fluid .info-box, body .container-sm .info-box, body .container-md .info-box, body .container-lg .info-box, body .container-xl .info-box {
   width: 100%;
   max-width: 640px;
@@ -3932,6 +3948,12 @@ body .container-fluid .info-box, body .container-sm .info-box, body .container-m
   background-color: #f2f2f2;
   -webkit-box-shadow: 2px 3px 15px #000000;
           box-shadow: 2px 3px 15px #000000;
+}
+
+@media only screen and (min-width: 601px) {
+  body .container-fluid .mobile-alert, body .container-sm .mobile-alert, body .container-md .mobile-alert, body .container-lg .mobile-alert, body .container-xl .mobile-alert {
+    display: none;
+  }
 }
 
 body .container-fluid .btn-primary, body .container-sm .btn-primary, body .container-md .btn-primary, body .container-lg .btn-primary, body .container-xl .btn-primary {
@@ -3991,6 +4013,12 @@ body .container-fluid .col #canvas, body .container-sm .col #canvas, body .conta
           box-shadow: 2px 3px 15px #000000;
 }
 
+@media only screen and (max-width: 600px) {
+  body .container-fluid .col #canvas, body .container-sm .col #canvas, body .container-md .col #canvas, body .container-lg .col #canvas, body .container-xl .col #canvas {
+    display: none;
+  }
+}
+
 body .container-fluid .content-wrapper, body .container-sm .content-wrapper, body .container-md .content-wrapper, body .container-lg .content-wrapper, body .container-xl .content-wrapper {
   padding: 30px;
 }
@@ -4000,4 +4028,10 @@ body .container-fluid .content-wrapper #playerScore, body .container-sm .content
   font-size: 40px;
   text-align: center;
   color: #f2f2f2;
+}
+
+@media only screen and (max-width: 600px) {
+  body .container-fluid .content-wrapper #playerScore, body .container-sm .content-wrapper #playerScore, body .container-md .content-wrapper #playerScore, body .container-lg .content-wrapper #playerScore, body .container-xl .content-wrapper #playerScore {
+    display: none;
+  }
 }

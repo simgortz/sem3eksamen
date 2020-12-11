@@ -1,11 +1,19 @@
 <?php 
-    if ($loggedin === true){
+if ($loggedin === true){
+    // If logged in, show account info
+    echo "
+        <div class=\"account-information\">
+            <h1>Welcome " . $username . "!</h1>
+            <p>On this page you can use the formular below if you wish to change your password.</p>
+        </div>
+    ";
+    if($passwordchanged == true){
         echo "
-                <div class=\"info-box\">
-                    <p>Username: " . $username . "</p>
-                </div>
-            ";
-    }else{
-        include('php/login-form.php');
+        <div class=\"account-information\">
+            <p>Your password has been changed.</p>
+        </div>";
     }
+}
+// If NOT logged in, show register form
+include("php/login-form.php");
 ?>

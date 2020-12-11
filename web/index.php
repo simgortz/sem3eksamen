@@ -1,53 +1,56 @@
 <?php
-    // Initialize the session
-    session_start();
+// Initialize the session
+session_start();
 
-    // Include config file
-    require_once "php/config.php";
+// Include config file
+require_once "php/config.php";
 
-    // Check if an account was just created
-    if(isset($_SESSION["accountcreated"])){
-        $accountcreated = $_SESSION["accountcreated"];
-    }else{
-        $accountcreated = $_SESSION["accountcreated"] = false;
-    }
-    
-    // Check which page the user is visiting
-    if(isset($_GET['page'])){
-        $_SESSION['page'] = $page = $_GET['page'];
-        if(preg_match('/^[a-z0-9\-]+$/', $page)){
-            $subpages = ["frontpage", "account"];
-            $i = 0;
-            $pagetoload = "";
-            while($i < count($subpages)){
-                if($page == $subpages[$i]){
-                    $pagetoload = $page;
-                }
-                $i++;
+// Check if an account was just created
+if(isset($_SESSION["accountcreated"])){
+    $accountcreated = $_SESSION["accountcreated"];
+}else{
+    $accountcreated = $_SESSION["accountcreated"] = false;
+}
+
+// Check which page the user is visiting
+if(isset($_GET['page'])){
+    $_SESSION['page'] = $page = $_GET['page'];
+    if(preg_match('/^[a-z0-9\-]+$/', $page)){
+        $subpages = ["frontpage", "account"];
+        $i = 0;
+        $pagetoload = "";
+        while($i < count($subpages)){
+            if($page == $subpages[$i]){
+                $pagetoload = $page;
             }
-            if($pagetoload == ""){
-                $_SESSION['page'] = $page = $pagetoload = "frontpage";
-            }
+            $i++;
         }
-    }else{
-        $_SESSION['page'] = $page = $pagetoload = "frontpage";
-    }
-
-    // Check if the user is already logged in
-    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        $loggedin = true;
-        $username = $_SESSION["username"];
-    }else{
-        $loggedin = false;
-        if($pagetoload == "account"){
-            require "php/register.php";
-        }elseif($pagetoload == "frontpage"){
-            require "php/login.php";
+        if($pagetoload == ""){
+            $_SESSION['page'] = $page = $pagetoload = "frontpage";
         }
     }
+}else{
+    $_SESSION['page'] = $page = $pagetoload = "frontpage";
+}
 
-    // Close connection to database
-    $mysqli->close();
+// Check if the user is already logged in
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    $loggedin = true;
+    $username = $_SESSION["username"];
+    if($pagetoload == "account"){
+        include "php/reset-password.php";
+    }
+}else{
+    $loggedin = false;
+    if($pagetoload == "account"){
+        require "php/register.php";
+    }elseif($pagetoload == "frontpage"){
+        require "php/login.php";
+    }
+}
+
+// Close connection to database
+$mysqli->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,28 +70,32 @@
                 <div class="col">
                     <nav class="navbar navbar-expand-sm">
                         <a class="navbar-brand" href="index.php?page=frontpage">Dog > Cat > Rat</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <!-- Navbar / menu toggle button-->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon fas fa-bars"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <!-- Toggled navbar-->
+                        <div class="collapse navbar-collapse" id="navbarToggler">
                             <ul class="navbar-nav mr-auto mt-2 mt-sm-0">
                                 <?php
-                                    if($loggedin == true){
-                                        echo '
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="php/logout.php">Log out</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="index.php?page=account">Account</span></a>
-                                        </li>
-                                        ';
-                                    }else{
-                                        echo '
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="index.php?page=account">Register</span></a>
-                                        </li>
-                                        ';
-                                    }
+                                if($loggedin == true){
+                                    // Menu items if logged in
+                                    echo '
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.php?page=account">Account</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="php/logout.php">Log out</a>
+                                    </li>
+                                    ';
+                                }else{
+                                    // Menu items if NOT logged in
+                                    echo '
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.php?page=account">Register</span></a>
+                                    </li>
+                                    ';
+                                }
                                 ?>
                             </ul>
                         </div>
@@ -98,7 +105,8 @@
             <div class="row">
                 <div class="col content-wrapper">
                     <?php 
-                        include "subpages/" . $pagetoload . ".php";
+                    // Include content based on subpage
+                    include "subpages/" . $pagetoload . ".php";
                     ?>
                 </div>
             </div>

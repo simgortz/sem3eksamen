@@ -5,7 +5,22 @@ body{
     margin: 0;
     background-attachment: fixed;
 
+    h1{
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    p{
+        font-size: 18px;
+    }
+
     .container-fluid{
+        .account-information{
+            color: $main-white;
+            width: 100%;
+            max-width: 640px;
+            margin: 10% auto 0 auto;
+        }
         .info-box{
             width: 100%;
             max-width: 640px;
@@ -14,7 +29,15 @@ body{
             @include main-border;
             background-color: $main-white;
             @include box-shadow;
+
         }
+
+        .mobile-alert{
+            @media only screen and (min-width: 601px) {
+                display: none;
+            }
+        }
+
         .btn-primary{
             background-color: $main-color;
             border-color: $main-color-darker;
@@ -53,6 +76,9 @@ body{
             margin: auto;
             #canvas{
                 display: block;
+                @media only screen and (max-width: 600px) {
+                    display: none;
+                }
                 margin: 0 auto 0 auto;
                 max-height: 90%;
                 @include box-shadow;
@@ -62,6 +88,9 @@ body{
         .content-wrapper{
             padding: $main-space;
             #playerScore{
+                @media only screen and (max-width: 600px) {
+                    display: none;
+                }
                 margin-top: $main-space;
                 font-size: 40px;
                 text-align: center;
