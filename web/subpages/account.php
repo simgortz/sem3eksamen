@@ -7,6 +7,7 @@ if ($loggedin === true){
             <p>On this page you can use the formular below if you wish to change your password.</p>
         </div>
     ";
+    // If password was just changed, let the user know
     if($passwordchanged == true){
         echo "
         <div class=\"account-information\">

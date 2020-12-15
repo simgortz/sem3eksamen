@@ -1,6 +1,7 @@
 <!-- Form used for login/register -->
 <form class="info-box" action="<?php echo ($pagetoload == "account" ? "index.php?page=account" : "index.php?page=frontpage") ?>" method="post">
     <?php
+    // If not logged in, show username input field (for logging in or creating account)
     if($loggedin == false){
         echo "
         <div class=\"form-group" . ((!empty($username_err)) ? ' has-error' : '') . "\">
@@ -11,13 +12,16 @@
         ";
     }
     ?>
-      
+
+    <!-- Always show password input field -->
     <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
         <label>Password</label>
         <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
         <span class="help-block"><?php echo $password_err; ?></span>
     </div>
+
     <?php
+    // If on account page
     if ($pagetoload == "account"){
         if($loggedin){
             // If logged in and on account page, add "New password" field for changing password

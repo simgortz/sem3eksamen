@@ -4023,6 +4023,17 @@ body .container-fluid .content-wrapper, body .container-sm .content-wrapper, bod
   padding: 30px;
 }
 
+body .container-fluid .content-wrapper .text-on-background, body .container-sm .content-wrapper .text-on-background, body .container-md .content-wrapper .text-on-background, body .container-lg .content-wrapper .text-on-background, body .container-xl .content-wrapper .text-on-background {
+  color: #f2f2f2;
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+body .container-fluid .content-wrapper .text-on-background p, body .container-sm .content-wrapper .text-on-background p, body .container-md .content-wrapper .text-on-background p, body .container-lg .content-wrapper .text-on-background p, body .container-xl .content-wrapper .text-on-background p {
+  margin-bottom: 30px;
+}
+
 body .container-fluid .content-wrapper #playerScore, body .container-sm .content-wrapper #playerScore, body .container-md .content-wrapper #playerScore, body .container-lg .content-wrapper #playerScore, body .container-xl .content-wrapper #playerScore {
   margin-top: 30px;
   font-size: 40px;

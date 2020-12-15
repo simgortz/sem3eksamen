@@ -220,8 +220,15 @@ window.onload = function() {
 
 // Movement controls -------------------------------------------------------------------------
 window.addEventListener("keydown", (e)=>{
+    // Stop arrow keys from scrolling
+    if([37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+
+    // Movement
     checkMovement(e.key);
 });
+
 function movePlayer(playerNumber){
     movementDestination = maze[playerNumber.y + movement.y][playerNumber.x + movement.x].tile;
     if(movementDestination.walkable){
@@ -297,3 +304,4 @@ function checkMovement(input){
         movePlayer(player2);
     }
 }
+

@@ -92,7 +92,7 @@ $mysqli->close();
                                     // Menu items if NOT logged in
                                     echo '
                                     <li class="nav-item">
-                                        <a class="nav-link" href="index.php?page=account">Register</span></a>
+                                        <a class="nav-link" href="index.php?page=account">Create Account</span></a>
                                     </li>
                                     ';
                                 }
